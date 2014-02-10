@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<parent>
+		<groupId>com.lianjita</groupId>
+		<artifactId>gap-framework</artifactId>
+		<version>0.1.0</version>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.lianjita</groupId>
+	<artifactId>gap-lianjita</artifactId>
+	<packaging>war</packaging>
+	<name>Gap-lianjita</name>
+	<description>
+        Gap-lianjita standard Servlet container war.
+    </description>
+
+	<dependencies>
+
+		<!-- spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		</dependency>
+
+		<!--Commons -->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+		</dependency>
+
+		<!-- Velocity View -->
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity-tools</artifactId>
+		</dependency>
+
+		<!-- json -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+		</dependency>
+
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.appengine</groupId>
+			<artifactId>appengine-java-sdk</artifactId>
+			<type>zip</type>
+		</dependency>
+
+		<dependency>
+			<groupId>org.tautua.markdownpapers</groupId>
+			<artifactId>markdownpapers-core</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+
+		<plugins>
+			<plugin>
+				<groupId>com.mycila.maven-license-plugin</groupId>
+				<artifactId>maven-license-plugin</artifactId>
+				<configuration>
+					<header>../conf/header.txt</header>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
+			</plugin>
+
+			<!-- maven dependency plugin use to unpack gae-java-sdk.zip file -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>${maven-dependency-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>unpack-gae-java-sdk</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>unpack-dependencies</goal>
+						</goals>
+						<configuration>
+							<includeGroupIds>com.google.appengine</includeGroupIds>
+							<includeArtifactIds>appengine-java-sdk</includeArtifactIds>
+							<outputDirectory>
+								${settings.localRepository}/com/google/appengine/appengine-java-sdk/${gae.version}
+							</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- google appe engine plugin -->
+			<plugin>
+				<groupId>net.kindleit</groupId>
+				<artifactId>maven-gae-plugin</artifactId>
+				<version>0.9.2</version>
+				<configuration>
+					<serverId>appengine.google.com</serverId>
+					<sdkDir>${settings.localRepository}/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}</sdkDir>
+					<appDir>${project.build.directory}/${project.build.finalName}</appDir>
+					<port>8080</port>
+					<passIn>true</passIn>
+					<jvmFlags>
+						<jvmFlag>-Dappengine.user.timezone=UTC</jvmFlag>
+					</jvmFlags>
+				</configuration>
+			</plugin>
+
+			<!-- jetty -->
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>maven-jetty-plugin</artifactId>
+				<version>6.1.22</version>
+				<configuration>
+					<contextPath>/</contextPath>
+					<connectors>
+						<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+							<port>8080</port>
+							<maxIdleTime>60000</maxIdleTime>
+						</connector>
+					</connectors>
+					<requestLog implementation="org.mortbay.jetty.NCSARequestLog">
+						<filename>target/access.log</filename>
+						<retainDays>90</retainDays>
+						<append>false</append>
+						<extended>false</extended>
+						<logTimeZone>GMT+8:00</logTimeZone>
+					</requestLog>
+				</configuration>
+			</plugin>
+		</plugins>
+
+		<finalName>gap-framework</finalName>
+	</build>
+</project>
+

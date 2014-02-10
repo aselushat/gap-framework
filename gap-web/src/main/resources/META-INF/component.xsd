@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:beans="http://www.springframework.org/schema/beans"
+	targetNamespace="http://www.lianjita.com/schema/component"
+	elementFormDefault="qualified">
+
+	<import namespace="http://www.springframework.org/schema/beans" />
+
+	<element name="scan-controller">
+		<annotation>
+			<documentation>
+				<![CDATA[扫描galaxy的组件]]>
+			</documentation>
+		</annotation>
+
+		<complexType>
+			<attribute name="package" type="string" use="required" />
+		</complexType>
+	</element>
+
+</schema>
