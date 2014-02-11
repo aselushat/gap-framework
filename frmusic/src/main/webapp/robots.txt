@@ -1,0 +1,23 @@
+User-agent: *
+Disallow:/admin$
+
+User-agent: Mediapartners-Google
+Disallow:/
+
+User-agent: hl_ftien_spider
+Disallow:/
+
+User-agent: JikeSpider
+Disallow:/ 
+
+User-agent: MJ12bot
+Disallow:/
+
+User-agent: WBSearchBot
+Disallow:/
+
+User-agent: BLEXBot
+Disallow:/
+
+User-agent: SemrushBot
+Disallow: /
