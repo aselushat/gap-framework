@@ -1,5 +1,0 @@
-
-#foreach($user in $users)
-	$user.username 
-#end
-
