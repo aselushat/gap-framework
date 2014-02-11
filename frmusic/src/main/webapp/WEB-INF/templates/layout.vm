@@ -1,12 +1,19 @@
-<html>
-    <head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
-		<title>fanrenmusic</title>
-	</head>
-	<body>
-		<div >
-			$screen_content
-        </div>
-    </body>
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title>凡人音乐社</title>
+	<link rel="stylesheet" href="/static/css/main.css" />
+</head>
+
+<body>
+	<div>
+		$screen_content
+	</div>
+	<div class="footer">
+        Designed by <a href="http://weibo.com/fuckthelife7" target="_blank" >wuqiong</a>
+    </div>
+</body>
 </html>
 
