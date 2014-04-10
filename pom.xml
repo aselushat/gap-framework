@@ -24,7 +24,7 @@
     <properties>
         <servlet.version>2.5</servlet.version>
         <gap.framework>0.1.0</gap.framework>
-        <gae.version>1.7.0</gae.version>
+        <gae.version>1.9.2</gae.version>
 
         <spring.version>3.1.1.RELEASE</spring.version>
         <velocity.version>1.7</velocity.version>
@@ -269,8 +269,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>

@@ -19,6 +19,17 @@
 
 	<dependencies>
 
+		<dependency>
+			<groupId>com.lianjita</groupId>
+			<artifactId>gap-persistence</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.googlecode.objectify-appengine-spring</groupId>
+			<artifactId>objectify-appengine-spring</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
 		<!-- spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -77,7 +88,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-            <scope>test</scope>
+			<scope>test</scope>
 		</dependency>
 
 		<dependency>
@@ -85,11 +96,12 @@
 			<artifactId>jsoup</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>com.google.appengine</groupId>
-			<artifactId>appengine-java-sdk</artifactId>
-			<type>zip</type>
-		</dependency>
+        <dependency>
+                    <groupId>com.google.appengine</groupId>
+                            <artifactId>appengine-api-1.0-sdk</artifactId>
+                                    <version>1.9.2</version>
+                                        </dependency>
+
 
 		<dependency>
 			<groupId>org.tautua.markdownpapers</groupId>
@@ -176,6 +188,11 @@
 					</requestLog>
 				</configuration>
 			</plugin>
+            <plugin>
+                   <groupId>com.google.appengine</groupId>
+                      <artifactId>appengine-maven-plugin</artifactId>
+                         <version>1.9.2</version>
+                     </plugin>
 		</plugins>
 
 		<finalName>fanren-music</finalName>

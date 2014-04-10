@@ -9,9 +9,6 @@
 
 <body>
 	<div>
-        <div class="login">
-			
-		</div>
 		$screen_content
 	</div>
 	<div class="footer">

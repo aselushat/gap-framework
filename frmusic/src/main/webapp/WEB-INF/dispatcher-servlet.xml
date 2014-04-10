@@ -50,8 +50,7 @@
 		<property name="contentType" value="text/html; charset=utf-8" />
 		<property name="mappings">
 			<map>
-				<entry key="auth" value="auth/layout/default.vm" />
-				<entry key="admin" value="admin/layout/default.vm" />
+				<entry key="admin" value="admin/layout.vm" />
 			</map>
 		</property>
 	</bean>
